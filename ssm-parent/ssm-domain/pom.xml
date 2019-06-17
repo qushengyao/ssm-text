@@ -12,5 +12,13 @@
     <groupId>cn.itcast</groupId>
     <artifactId>ssm-domain</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>cn.itcast</groupId>
+            <artifactId>ssm-untils</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
 
 </project>

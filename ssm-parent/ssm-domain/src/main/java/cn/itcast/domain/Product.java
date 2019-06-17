@@ -1,5 +1,8 @@
 package cn.itcast.domain;
 
+import cn.itcast.untils.DateUtils;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class Product {
@@ -7,10 +10,12 @@ public class Product {
     private String productNum;
     private String productName;
     private String cityName;
-    private Date departureTimeStr;
+    private Date departureTime ;
+    private String departureTimeStr;
     private Double productPrice;
     private String productDesc;
-    private Integer productStatusStr;
+    private Integer productStatus ;
+    private String productStatusStr;
 
 
     public String getId() {
@@ -45,13 +50,7 @@ public class Product {
         this.cityName = cityName;
     }
 
-    public Date getDepartureTimeStr() {
-        return departureTimeStr;
-    }
 
-    public void setDepartureTimeStr(Date departureTimeStr) {
-        this.departureTimeStr = departureTimeStr;
-    }
 
     public Double getProductPrice() {
         return productPrice;
@@ -69,11 +68,46 @@ public class Product {
         this.productDesc = productDesc;
     }
 
-    public Integer getProductStatusStr() {
+    public Date getDepartureTime() {
+        return departureTime;
+    }
+
+    public void setDepartureTime(Date departureTime) {
+        this.departureTime = departureTime;
+    }
+
+    public Integer getProductStatus() {
+        return productStatus;
+    }
+
+    public void setProductStatus(Integer productStatus) {
+        this.productStatus = productStatus;
+    }
+
+    public String getDepartureTimeStr() {
+        if(departureTime!=null){
+            departureTimeStr= DateUtils.date2String(departureTime,"yyyy-MM-dd HH:mm:ss");
+        }
+        return departureTimeStr;
+    }
+
+    public void setDepartureTimeStr(String departureTimeStr) {
+        this.departureTimeStr = departureTimeStr;
+    }
+
+    public String getProductStatusStr() {
+        if(productStatus != null){
+            if (productStatus == 0){
+                productStatusStr = "关闭";
+            }
+            if (productStatus == 1){
+                productStatusStr = "开启";
+            }
+        }
         return productStatusStr;
     }
 
-    public void setProductStatusStr(Integer productStatusStr) {
+    public void setProductStatusStr(String productStatusStr) {
         this.productStatusStr = productStatusStr;
     }
 }

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.itcast.dao.OrdersDao">
+
+    <resultMap id="orderMap" type="cn.itcast.domain.Orders">
+        <result  column="id" property="id"></result>
+        <result column="orderNum" property="orderNum"></result>
+        <result column="orderStatus" property="orderStatus"></result>
+        <result column="orderStatus" property="orderStatus"></result>
+        <result column="peopleCount" property="peopleCount"></result>
+        <result column="payType" property="payType"></result>
+        <result column="orderDesc" property="orderDesc"></result>
+        <association property="product" column="productId"  select="cn.itcast.dao.ProductDao.findById"></association>
+
+    </resultMap>
+
+    <select id="findAll" resultMap="orderMap">
+        select o.id ,o.orderNum,o.orderTime,o.orderStatus,o.peopleCount,o.payType,o.orderDesc ,o.productId from  orders o , product p where o.productId = p.id
+    </select>
+</mapper>

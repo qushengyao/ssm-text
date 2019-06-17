@@ -17,13 +17,22 @@ public class ProduttController {
     private ProductService productService;
 
 
-    @RequestMapping("/findAll")
+    @RequestMapping("/findAll.do")
     public ModelAndView findAll(ModelAndView modelAndView){
         List<Product> productList = productService.findAll();
         modelAndView.addObject("productList",productList);
         modelAndView.setViewName("product-list");
         return modelAndView;
     }
+
+
+    @RequestMapping("/save.do")
+    public String save(Product product ){
+
+        productService.saveProduct(product);
+        return ("redirect:findAll.do");
+    }
+
 
 
 }

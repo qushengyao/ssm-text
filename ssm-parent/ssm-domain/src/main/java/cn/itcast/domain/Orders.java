@@ -1,15 +1,34 @@
 package cn.itcast.domain;
 
+import cn.itcast.untils.DateUtils;
+import org.springframework.security.core.parameters.P;
+
+import java.util.Date;
+import java.util.List;
+
 public class Orders {
     private String id;
-    private String ordernum;
-    private String ordertime;
-    private Integer peoplecount;
-    private String orderdesc;
-    private Integer paytype;
-    private Integer orderstatus;
-    private String productid;
-    private String memberid;
+    private String orderNum;
+    private Date orderTime;
+    private String orderTimeStr;
+    private int orderStatus;
+    private String orderStatusStr;
+    private int peopleCount;
+    private Product product;
+    private List<Traveller> travellers;
+    private Member member;
+    private Integer payType;
+    private String payTypeStr;
+    private String orderDesc;
+    private String productId;
+
+    public String getProductId() {
+        return productId;
+    }
+
+    public void setProductId(String productId) {
+        this.productId = productId;
+    }
 
     public String getId() {
         return id;
@@ -19,67 +38,137 @@ public class Orders {
         this.id = id;
     }
 
-    public String getOrdernum() {
-        return ordernum;
+    public String getOrderNum() {
+        return orderNum;
     }
 
-    public void setOrdernum(String ordernum) {
-        this.ordernum = ordernum;
+    public void setOrderNum(String orderNum) {
+        this.orderNum = orderNum;
     }
 
-    public String getOrdertime() {
-        return ordertime;
+    public Date getOrderTime() {
+        return orderTime;
     }
 
-    public void setOrdertime(String ordertime) {
-        this.ordertime = ordertime;
+    public void setOrderTime(Date orderTime) {
+        this.orderTime = orderTime;
     }
 
-    public Integer getPeoplecount() {
-        return peoplecount;
+    public String getOrderTimeStr() {
+        if (orderTime != null){
+            orderTimeStr = DateUtils.date2String(orderTime,"yyyy-MM-dd hh:mm");
+        }
+        return orderTimeStr;
     }
 
-    public void setPeoplecount(Integer peoplecount) {
-        this.peoplecount = peoplecount;
+    public void setOrderTimeStr(String orderTimeStr) {
+        this.orderTimeStr = orderTimeStr;
     }
 
-    public String getOrderdesc() {
-        return orderdesc;
+    public int getOrderStatus() {
+        return orderStatus;
     }
 
-    public void setOrderdesc(String orderdesc) {
-        this.orderdesc = orderdesc;
+    public void setOrderStatus(int orderStatus) {
+        this.orderStatus = orderStatus;
     }
 
-    public Integer getPaytype() {
-        return paytype;
+    public String getOrderStatusStr() {
+        if (orderStatus == 0){
+            orderStatusStr = "未支付";
+        }else if(orderStatus == 1){
+            orderStatusStr = "已支付";
+        }
+
+        return orderStatusStr;
     }
 
-    public void setPaytype(Integer paytype) {
-        this.paytype = paytype;
+    public void setOrderStatusStr(String orderStatusStr) {
+        this.orderStatusStr = orderStatusStr;
     }
 
-    public Integer getOrderstatus() {
-        return orderstatus;
+    public int getPeopleCount() {
+        return peopleCount;
     }
 
-    public void setOrderstatus(Integer orderstatus) {
-        this.orderstatus = orderstatus;
+    public void setPeopleCount(int peopleCount) {
+        this.peopleCount = peopleCount;
     }
 
-    public String getProductid() {
-        return productid;
+    public Product getProduct() {
+        return product;
     }
 
-    public void setProductid(String productid) {
-        this.productid = productid;
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
-    public String getMemberid() {
-        return memberid;
+    public List<Traveller> getTravellers() {
+        return travellers;
     }
 
-    public void setMemberid(String memberid) {
-        this.memberid = memberid;
+    public void setTravellers(List<Traveller> travellers) {
+        this.travellers = travellers;
+    }
+
+    public Member getMember() {
+        return member;
+    }
+
+    public void setMember(Member member) {
+        this.member = member;
+    }
+
+    public Integer getPayType() {
+        return payType;
+    }
+
+    public void setPayType(Integer payType) {
+        this.payType = payType;
+    }
+
+    public String getPayTypeStr() {
+        if(payType != null){
+            if (payType == 0){
+                payTypeStr = "支付宝";
+            }else if (payType == 1){
+                payTypeStr = "微信";
+            }else if (payType == 2){
+                payTypeStr = "其他";
+            }
+        }
+        return payTypeStr;
+    }
+
+    public void setPayTypeStr(String payTypeStr) {
+        this.payTypeStr = payTypeStr;
+    }
+
+    public String getOrderDesc() {
+        return orderDesc;
+    }
+
+    public void setOrderDesc(String orderDesc) {
+        this.orderDesc = orderDesc;
+    }
+
+    @Override
+    public String toString() {
+        return "Orders{" +
+                "id='" + id + '\'' +
+                ", orderNum='" + orderNum + '\'' +
+                ", orderTime=" + orderTime +
+                ", orderTimeStr='" + orderTimeStr + '\'' +
+                ", orderStatus=" + orderStatus +
+                ", orderStatusStr='" + orderStatusStr + '\'' +
+                ", peopleCount=" + peopleCount +
+                ", product=" + product +
+                ", travellers=" + travellers +
+                ", member=" + member +
+                ", payType=" + payType +
+                ", payTypeStr='" + payTypeStr + '\'' +
+                ", orderDesc='" + orderDesc + '\'' +
+                ", productId='" + productId + '\'' +
+                '}';
     }
 }
