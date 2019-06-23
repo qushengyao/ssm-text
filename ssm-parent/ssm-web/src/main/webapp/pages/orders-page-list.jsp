@@ -316,7 +316,7 @@
                     <div class="pull-left">
                         <div class="form-group form-inline">
                             总共${pageInfo.pages}页，共${pageInfo.total} 条数据。 每页
-                            <select class="form-control" id="changePageSize" onchange="changePageSize()">
+                            <select class="form-control" id="changePageSize" onchange="changePageSize()" >
                                 <option>1</option>
                                 <option>2</option>
                                 <option>3</option>
@@ -337,7 +337,7 @@
 							</c:forEach>
 							<li><a href="${pageContext.request.contextPath}/orders/findAll.do?page=${pageInfo.pageNum+1}&pageSize=${pageInfo.pageSize}">下一页</a></li>
                             <li>
-                                <a href="${pageContext.request.contextPath}/orders/findAll.do?page=${pageInfo.pages}&pageSize=${pageInfo.pageSize}" aria-label="Next">尾页</a>
+                                <a href="${pageContext.request.contextPath}/orders/findAll.do?page=${pageInfo.pages}&pageSize*=${pageInfo.pageSize}" aria-label="Next">尾页</a>
                             </li>
                         </ul>
                     </div>

@@ -4,10 +4,13 @@ public class Traveller {
     private String id;
     private String name;
     private String sex;
-    private String phonenum;
-    private Integer credentialstype;
-    private String credentialsnum;
-    private Integer travellertype;
+    private String phoneNum;
+    private Integer credentialsType;
+    private String credentialsTypeStr;
+    private String credentialsNum;
+    private Integer travellerType;
+    private String travellerTypeStr;
+
 
     public String getId() {
         return id;
@@ -33,35 +36,67 @@ public class Traveller {
         this.sex = sex;
     }
 
-    public String getPhonenum() {
-        return phonenum;
+    public String getPhoneNum() {
+        return phoneNum;
     }
 
-    public void setPhonenum(String phonenum) {
-        this.phonenum = phonenum;
+    public void setPhoneNum(String phoneNum) {
+        this.phoneNum = phoneNum;
     }
 
-    public Integer getCredentialstype() {
-        return credentialstype;
+    public Integer getCredentialsType() {
+        return credentialsType;
     }
 
-    public void setCredentialstype(Integer credentialstype) {
-        this.credentialstype = credentialstype;
+    public void setCredentialsType(Integer credentialsType) {
+        this.credentialsType = credentialsType;
     }
 
-    public String getCredentialsnum() {
-        return credentialsnum;
+    public String getCredentialsTypeStr() {
+        if (credentialsType != null){
+            if (credentialsType == 0){
+                credentialsTypeStr = "身份证";
+            }else if (credentialsType == 1){
+                credentialsTypeStr= "护照";
+            }else if (credentialsType == 2){
+                credentialsTypeStr= "军官证";
+            }
+        }
+        return credentialsTypeStr;
     }
 
-    public void setCredentialsnum(String credentialsnum) {
-        this.credentialsnum = credentialsnum;
+    public void setCredentialsTypeStr(String credentialsTypeStr) {
+        this.credentialsTypeStr = credentialsTypeStr;
     }
 
-    public Integer getTravellertype() {
-        return travellertype;
+    public String getCredentialsNum() {
+        return credentialsNum;
     }
 
-    public void setTravellertype(Integer travellertype) {
-        this.travellertype = travellertype;
+    public void setCredentialsNum(String credentialsNum) {
+        this.credentialsNum = credentialsNum;
+    }
+
+    public Integer getTravellerType() {
+        return travellerType;
+    }
+
+    public void setTravellerType(Integer travellerType) {
+        this.travellerType = travellerType;
+    }
+
+    public String getTravellerTypeStr() {
+        if (travellerType != null){
+            if (travellerType == 0){
+                travellerTypeStr= "成人";
+            }else if (travellerType == 1){
+                travellerTypeStr = "儿童";
+            }
+        }
+        return travellerTypeStr;
+    }
+
+    public void setTravellerTypeStr(String travellerTypeStr) {
+        this.travellerTypeStr = travellerTypeStr;
     }
 }

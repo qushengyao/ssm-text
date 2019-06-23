@@ -18,6 +18,11 @@
 
     <context:component-scan base-package="cn.itcast.controller"></context:component-scan>
 
+
+
+    <context:component-scan base-package="cn.itcast.service"></context:component-scan>
+    <aop:aspectj-autoproxy proxy-target-class="true"></aop:aspectj-autoproxy>
+
     <mvc:annotation-driven conversion-service="conversionServiceFactory"></mvc:annotation-driven>
 
     <mvc:default-servlet-handler></mvc:default-servlet-handler>

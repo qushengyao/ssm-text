@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.itcast.dao.OrdersDao">
 
-    <resultMap id="orderMap" type="cn.itcast.domain.Orders">
+    <resultMap id="orderMap" type="orders">
         <result  column="id" property="id"></result>
         <result column="orderNum" property="orderNum"></result>
         <result column="orderStatus" property="orderStatus"></result>
@@ -17,6 +17,23 @@
     </resultMap>
 
     <select id="findAll" resultMap="orderMap">
-        select o.id ,o.orderNum,o.orderTime,o.orderStatus,o.peopleCount,o.payType,o.orderDesc ,o.productId from  orders o , product p where o.productId = p.id
+        select o.id ,o.orderNum,o.orderTime,o.orderStatus,o.peopleCount,o.payType,o.orderDesc ,o.productId from  orders o
+    </select>
+
+
+    <resultMap id="ordersMap" type="orders">
+        <result  column="id" property="id"></result>
+        <result column="orderNum" property="orderNum"></result>
+        <result column="orderStatus" property="orderStatus"></result>
+        <result column="orderStatus" property="orderStatus"></result>
+        <result column="peopleCount" property="peopleCount"></result>
+        <result column="payType" property="payType"></result>
+        <result column="orderDesc" property="orderDesc"></result>
+        <association property="product" column="productId"  select="cn.itcast.dao.ProductDao.findById"></association>
+        <association property="member" column="memberId" select="cn.itcast.dao.MemberDao.findById"></association>
+        <collection property="travellers" column="id"  select = "cn.itcast.dao.TravellerDao.findById" ></collection>
+    </resultMap>
+    <select id="findById" resultMap="ordersMap" parameterType="string">
+        select o.id ,o.orderNum,o.orderTime,o.orderStatus,o.peopleCount,o.payType,o.orderDesc ,o.productId ,o.memberId from  orders o  where o.id = #{id}
     </select>
 </mapper>
